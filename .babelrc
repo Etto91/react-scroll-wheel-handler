@@ -1,0 +1,7 @@
+{
+    "presets": [["airbnb", { "modules": false }]],
+    "plugins": [
+        "transform-object-assign",
+        "babel-plugin-transform-class-properties"
+    ]
+}
