@@ -1,5 +1,9 @@
 # React Scroll Wheel Handler
 
+[![npm version](https://badge.fury.io/js/react-scroll-wheel-handler.svg)](http://badge.fury.io/js/react-scroll-wheel-handler)
+
+[![NPM](https://nodei.co/npm/react-scroll-wheel-handler.png)](https://nodei.co/npm/react-scroll-wheel-handler/)
+
 Simple react component for handling scroll trackpad, arrow keys, swipe gestures and mouse wheel event.
 
 # Demo
