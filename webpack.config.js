@@ -37,11 +37,11 @@ const buildConfig = {
                 exclude: /node_modules/
             }
         ]
-    }
+    },
 
-    // plugins: [
-    //     ...(process.env.BUILD ? [new webpack.optimize.UglifyJsPlugin()] : [])
-    // ]
+    plugins: [
+        ...(process.env.BUILD ? [new webpack.optimize.UglifyJsPlugin()] : [])
+    ]
 };
 
 module.exports = process.env.BUILD ? buildConfig : testConfig;
