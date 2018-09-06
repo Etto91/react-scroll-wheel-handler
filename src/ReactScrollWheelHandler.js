@@ -26,13 +26,17 @@ export default class ReactScrollWheelHandler extends Component {
                 passive: true
             });
         }
+
+        if (this.timer) {
+            clearTimeout(this.timer);
+        }
     };
 
     startTimeout = () => {
         const { timeout } = this.props;
         this.onTimeout = true;
 
-        setTimeout(() => {
+        this.timer = setTimeout(() => {
             this.onTimeout = false;
         }, timeout);
     };
