@@ -8,7 +8,7 @@ Simple component for handling scroll trackpad, arrow keys, swipe gestures and mo
 
 # Demo
 
-[Live Demo](https://codepen.io/ettore-panini/pen/xaXEmKeditors=1011)
+[Live Demo](https://codepen.io/ettore-panini/pen/xaXEmK?editors=1011)
 
 # Usage
 
