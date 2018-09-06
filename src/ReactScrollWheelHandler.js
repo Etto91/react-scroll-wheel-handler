@@ -91,7 +91,14 @@ export default class ReactScrollWheelHandler extends Component {
     };
 
     handleKeyPress = e => {
-        const { upHandler, downHandler, timeout, pauseListeners } = this.props;
+        const {
+            upHandler,
+            downHandler,
+            leftHandler,
+            rightHandler,
+            timeout,
+            pauseListeners
+        } = this.props;
         if (pauseListeners) {
             return;
         }
@@ -107,7 +114,27 @@ export default class ReactScrollWheelHandler extends Component {
             if (timeout) {
                 this.startTimeout();
             }
-        } else if (e.keyCode === 40) {
+        }
+
+        if (e.keyCode === 37) {
+            if (rightHandler) {
+                rightHandler();
+            }
+            if (timeout) {
+                this.startTimeout();
+            }
+        }
+
+        if (e.keyCode === 39) {
+            if (leftHandler) {
+                leftHandler();
+            }
+            if (timeout) {
+                this.startTimeout();
+            }
+        }
+
+        if (e.keyCode === 40) {
             if (downHandler) {
                 downHandler();
             }
@@ -256,14 +283,12 @@ ReactScrollWheelHandler.propTypes = {
     leftHandler: PropTypes.func,
     rightHandler: PropTypes.func,
     customStyle: PropTypes.object,
-    waitEndScroll: PropTypes.bool.isRequired,
     CustomContainerComponent: PropTypes.func,
     pauseListeners: PropTypes.bool.isRequired,
     timeout: PropTypes.number
 };
 
 ReactScrollWheelHandler.defaultProps = {
-    waitEndScroll: true,
     pauseListeners: false,
     timeout: 600
 };
