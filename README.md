@@ -1,10 +1,6 @@
 # React Scroll Wheel Handler
 
-<!-- [![npm version](https://badge.fury.io/js/wheel-react.svg)](http://badge.fury.io/js/wheel-react) -->
-
-<!-- [![NPM](https://nodei.co/npm/wheel-react.png)](https://nodei.co/npm/wheel-react/) -->
-
-Simple component for handling scroll trackpad, arrow keys, swipe gestures and mouse wheel event.
+Simple react component for handling scroll trackpad, arrow keys, swipe gestures and mouse wheel event.
 
 # Demo
 
@@ -15,13 +11,15 @@ Simple component for handling scroll trackpad, arrow keys, swipe gestures and mo
 1. Install the npm package:
 
 ```bash
-    npm install --save wheel-react
+    npm install --save react-scroll-wheel-handler
+    or
+    yarn add react-scroll-wheel-handler
 ```
 
 2. Import it:
 
 ```javascript
-import ReactScrollWheelHandler from "wheel-react";
+import ReactScrollWheelHandler from "react-scroll-wheel-handler";
 ```
 
 3. Config the component:
@@ -53,7 +51,7 @@ All the other props are passed to the div/component returned.
 
 ```javascript
 import React, { Component } from "react";
-import ReactScrollWheelHandler from "wheel-react";
+import ReactScrollWheelHandler from " react-scroll-wheel-handler";
 
 class App extends React.Component {
     state = {
@@ -91,7 +89,7 @@ class App extends React.Component {
         const { colors, currentIndex } = this.state;
         return (
             <div>
-                <ReactScroll
+                <ReactScrollWheelHandler
                     upHandler={this.prevIndex}
                     downHandler={this.nextIndex}
                     pauseListeners={this.state.blockScroll}
@@ -101,7 +99,9 @@ class App extends React.Component {
                         backgroundColor: colors[currentIndex],
                         transition: "background-color .4s ease-out"
                     }}
-                />
+                >
+                    <h1>CIAO</h1>
+                </ReactScrollWheelHandler>
             </div>
         );
     }
