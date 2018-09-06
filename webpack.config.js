@@ -5,11 +5,8 @@ const outputPath = process.env.BUILD
     ? path.resolve("./")
     : path.resolve("./test");
 
-const clientConfig = {
-    entry: process.env.BUILD
-        ? "./src/ReactScrollWheelHandler"
-        : "./src/index.js",
-    devtool: process.env.BUILD ? false : "eval",
+const testConfig = {
+    entry: "./src/index.js",
     output: {
         path: outputPath,
         filename: "index.js"
@@ -21,10 +18,30 @@ const clientConfig = {
                 include: [path.resolve("./src")]
             }
         ]
-    },
-    plugins: [
-        ...(process.env.BUILD ? [new webpack.optimize.UglifyJsPlugin()] : [])
-    ]
+    }
 };
 
-module.exports = [clientConfig];
+const buildConfig = {
+    entry: "./src/ReactScrollWheelHandler",
+
+    output: {
+        path: outputPath,
+        filename: "index.js",
+        libraryTarget: "commonjs2"
+    },
+    module: {
+        rules: [
+            {
+                loader: "babel-loader",
+                include: [path.resolve("./src")],
+                exclude: /node_modules/
+            }
+        ]
+    }
+
+    // plugins: [
+    //     ...(process.env.BUILD ? [new webpack.optimize.UglifyJsPlugin()] : [])
+    // ]
+};
+
+module.exports = process.env.BUILD ? buildConfig : testConfig;

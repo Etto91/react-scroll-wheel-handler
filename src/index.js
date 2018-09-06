@@ -1,6 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import ReactScroll from "./ReactScrollWheelHandler";
+import ReactScrollWheelHandler from "../index";
+
 import styled from "styled-components";
 
 class App extends React.Component {
@@ -39,10 +40,9 @@ class App extends React.Component {
         const { colors, currentIndex } = this.state;
         return (
             <div>
-                <ReactScroll
+                <ReactScrollWheelHandler
                     upHandler={this.prevIndex}
                     downHandler={this.nextIndex}
-                    pauseListeners={this.state.blockScroll}
                     customStyle={{
                         width: "100%",
                         height: "100vh",

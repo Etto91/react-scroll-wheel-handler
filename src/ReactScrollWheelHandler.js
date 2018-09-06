@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 
-export default class ReactScrollWheelHandler extends Component {
+class ReactScrollWheelHandler extends Component {
     constructor(props) {
         super(props);
         this.lastScroll;
@@ -244,6 +244,7 @@ export default class ReactScrollWheelHandler extends Component {
             downHandler,
             waitEndScroll,
             pauseListeners,
+            disableKeyboard,
             ...otherProps
         } = this.props;
 
@@ -298,3 +299,5 @@ ReactScrollWheelHandler.defaultProps = {
     timeout: 600,
     disableKeyboard: false
 };
+
+export default ReactScrollWheelHandler;
