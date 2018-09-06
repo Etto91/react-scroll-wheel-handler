@@ -12,7 +12,7 @@
         "url": "git+https://github.com/Etto91/react-scroll-wheel-handler.git"
     },
     "author": "Etto91",
-    "license": "MIT",
+    "license": "ISC",
     "bugs": {
         "url": "https://github.com/Etto91/react-scroll-wheel-handler/issues"
     },
