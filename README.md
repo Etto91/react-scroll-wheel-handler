@@ -45,6 +45,7 @@ import ReactScrollWheelHandler from "wheel-react";
 -   **CustomContainerComponent**: Function/Component. It will be rendered in place of the container div.
 -   **pauseListeners**: Boolean. isRequired. Default: false. With this props you can block all events from be fired
 -   **timeout**: Integer. isRequired. Default: 600. Timeout between scroll.
+-   **disableKeyboard**: Boolean. Default: false.
 
 All the other props are passed to the div/component returned.
 

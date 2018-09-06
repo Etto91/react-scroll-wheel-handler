@@ -289,10 +289,12 @@ ReactScrollWheelHandler.propTypes = {
     customStyle: PropTypes.object,
     CustomContainerComponent: PropTypes.func,
     pauseListeners: PropTypes.bool.isRequired,
-    timeout: PropTypes.number
+    timeout: PropTypes.number,
+    disableKeyboard: PropTypes.bool.isRequired
 };
 
 ReactScrollWheelHandler.defaultProps = {
     pauseListeners: false,
-    timeout: 600
+    timeout: 600,
+    disableKeyboard: false
 };
