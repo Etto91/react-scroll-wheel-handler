@@ -36,13 +36,11 @@ class App extends React.Component {
 
     render() {
         const { colors, currentIndex } = this.state;
-        console.log("asd", this.state.blockScroll);
         return (
             <div>
                 <ReactScrollWheelHandler
                     upHandler={this.prevIndex}
                     downHandler={this.nextIndex}
-                    pauseListeners={this.state.blockScroll}
                     customStyle={{
                         width: "100%",
                         height: "100vh",
