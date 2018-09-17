@@ -6,7 +6,7 @@ console.log(IncreaseModel);
 class ReactScrollWheelHandler extends Component {
     constructor(props) {
         super(props);
-        this.lastScroll = 0;
+        this.lastScroll;
         this.nScrolling = [];
         this.firedEvent = false;
         this.onTimeout = false;
@@ -43,6 +43,7 @@ class ReactScrollWheelHandler extends Component {
 
         this.timer = setTimeout(() => {
             this.onTimeout = false;
+            console.log("clearTimeout");
         }, timeout);
     };
 
@@ -68,35 +69,39 @@ class ReactScrollWheelHandler extends Component {
         const { pauseListeners, timeout, upHandler, downHandler } = this.props;
         const now = new Date().getTime();
         const diffTime = now - this.lastScroll;
-        this.lastScroll = now;
-        if (!this.firedEvent && !pauseListeners && diffTime > 200) {
-            console.log("new scroll");
-            this.trainData = [];
-            this.scrollTime = 0;
+        if (!isNaN(this.lastScroll)) {
+            this.scrollTime += diffTime;
         }
+
+        this.lastScroll = now;
+
         const value = e.wheelDelta || -e.deltaY || -e.detail;
         const signScroll = Math.max(-1, Math.min(1, value));
 
         this.setTrainData(Math.abs(value));
+        const { increase, mac, trackpad } = IncreaseModel(this.trainData);
 
-        // const data = {
-        //     input: { scroll: this.trainData },
-        //     output: { increase: 0, mac: 1, trackpad: 1 }
-        // };
-        // this.dataString += JSON.stringify(data) + ",";
-        // localStorage.dataString = this.dataString;
+        if (!this.firedEvent && !pauseListeners && diffTime > 300) {
+            console.log("new scroll");
+            this.trainData = [];
+            this.scrollTime = 0;
+        }
+
+        const data = {
+            input: this.trainData,
+            output: { increase: 0, mac: 0, trackpad: 0 }
+        };
+        this.dataString += JSON.stringify(data) + ",";
+        localStorage.dataString = this.dataString;
         // console.log(this.trainData);
 
         // if (diffTime !== now) {
         //     this.scrollTime += diffTime;
         // }
 
-        // console.log(Math.abs(value));
-
-        const { increase } = IncreaseModel(this.trainData);
         const increasePercent = (increase * 100).toFixed(2);
-        console.log(increasePercent);
-        if (increasePercent > 70 && !this.firedEvent && !pauseListeners) {
+        console.log(increasePercent, mac, trackpad);
+        if (increasePercent > 40 && !this.firedEvent && !pauseListeners) {
             this.firedEvent = true;
 
             if (timeout) {

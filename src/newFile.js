@@ -1,86 +1,114 @@
 module.exports = [
     {
         input: [0, 0, 0, 1],
-        output: { increase: 1, mac: 1, trackpad: 1 }
+        output: { increase: 0, mac: 1, trackpad: 1 }
     },
     {
         input: [0, 0, 1, 9],
         output: { increase: 1, mac: 1, trackpad: 1 }
     },
     {
-        input: [0, 1, 9, 13],
+        input: [0, 1, 9, 19],
         output: { increase: 1, mac: 1, trackpad: 1 }
     },
     {
-        input: [1, 9, 13, 23],
+        input: [1, 9, 19, 52],
         output: { increase: 1, mac: 1, trackpad: 1 }
     },
     {
-        input: [9, 13, 23, 52],
+        input: [9, 19, 52, 108],
         output: { increase: 1, mac: 1, trackpad: 1 }
     },
     {
-        input: [13, 23, 52, 38],
-        output: { increase: 0, mac: 1, trackpad: 1 }
-    },
-    {
-        input: [23, 52, 38, 86],
+        input: [19, 52, 108, 155],
         output: { increase: 1, mac: 1, trackpad: 1 }
     },
     {
-        input: [52, 38, 86, 90],
+        input: [52, 108, 155, 169],
         output: { increase: 1, mac: 1, trackpad: 1 }
     },
     {
-        input: [38, 86, 90, 92],
-        output: { increase: 1, mac: 1, trackpad: 1 }
-    },
-    {
-        input: [86, 90, 92, 90],
+        input: [108, 155, 169, 163],
         output: { increase: 0, mac: 1, trackpad: 1 }
     },
     {
-        input: [90, 92, 90, 87],
+        input: [155, 169, 163, 153],
         output: { increase: 0, mac: 1, trackpad: 1 }
     },
     {
-        input: [92, 90, 87, 84],
+        input: [169, 163, 153, 144],
         output: { increase: 0, mac: 1, trackpad: 1 }
     },
     {
-        input: [90, 87, 84, 80],
+        input: [163, 153, 144, 136],
         output: { increase: 0, mac: 1, trackpad: 1 }
     },
     {
-        input: [87, 84, 80, 77],
+        input: [153, 144, 136, 129],
         output: { increase: 0, mac: 1, trackpad: 1 }
     },
     {
-        input: [84, 80, 77, 72],
+        input: [144, 136, 129, 121],
         output: { increase: 0, mac: 1, trackpad: 1 }
     },
     {
-        input: [80, 77, 72, 66],
+        input: [136, 129, 121, 115],
         output: { increase: 0, mac: 1, trackpad: 1 }
     },
     {
-        input: [77, 72, 66, 62],
+        input: [129, 121, 115, 110],
         output: { increase: 0, mac: 1, trackpad: 1 }
     },
     {
-        input: [72, 66, 62, 58],
+        input: [121, 115, 110, 105],
         output: { increase: 0, mac: 1, trackpad: 1 }
     },
     {
-        input: [66, 62, 58, 55],
+        input: [115, 110, 105, 100],
         output: { increase: 0, mac: 1, trackpad: 1 }
     },
     {
-        input: [62, 58, 55, 51],
+        input: [110, 105, 100, 188],
         output: { increase: 0, mac: 1, trackpad: 1 }
     },
     {
-        input: [58, 55, 51, 47],
+        input: [105, 100, 188, 87],
+        output: { increase: 0, mac: 1, trackpad: 1 }
+    },
+    {
+        input: [100, 188, 87, 82],
+        output: { increase: 0, mac: 1, trackpad: 1 }
+    },
+    {
+        input: [188, 87, 82, 77],
+        output: { increase: 0, mac: 1, trackpad: 1 }
+    },
+    {
+        input: [87, 82, 77, 72],
+        output: { increase: 0, mac: 1, trackpad: 1 }
+    },
+    {
+        input: [82, 77, 72, 68],
+        output: { increase: 0, mac: 1, trackpad: 1 }
+    },
+    {
+        input: [77, 72, 68, 64],
+        output: { increase: 0, mac: 1, trackpad: 1 }
+    },
+    {
+        input: [72, 68, 64, 59],
+        output: { increase: 0, mac: 1, trackpad: 1 }
+    },
+    {
+        input: [68, 64, 59, 55],
+        output: { increase: 0, mac: 1, trackpad: 1 }
+    },
+    {
+        input: [64, 59, 55, 51],
+        output: { increase: 0, mac: 1, trackpad: 1 }
+    },
+    {
+        input: [59, 55, 51, 47],
         output: { increase: 0, mac: 1, trackpad: 1 }
     },
     {
@@ -88,43 +116,43 @@ module.exports = [
         output: { increase: 0, mac: 1, trackpad: 1 }
     },
     {
-        input: [51, 47, 43, 40],
+        input: [51, 47, 43, 41],
         output: { increase: 0, mac: 1, trackpad: 1 }
     },
     {
-        input: [47, 43, 40, 37],
+        input: [47, 43, 41, 37],
         output: { increase: 0, mac: 1, trackpad: 1 }
     },
     {
-        input: [43, 40, 37, 34],
+        input: [43, 41, 37, 35],
         output: { increase: 0, mac: 1, trackpad: 1 }
     },
     {
-        input: [40, 37, 34, 31],
+        input: [41, 37, 35, 32],
         output: { increase: 0, mac: 1, trackpad: 1 }
     },
     {
-        input: [37, 34, 31, 28],
+        input: [37, 35, 32, 29],
         output: { increase: 0, mac: 1, trackpad: 1 }
     },
     {
-        input: [34, 31, 28, 26],
+        input: [35, 32, 29, 26],
         output: { increase: 0, mac: 1, trackpad: 1 }
     },
     {
-        input: [31, 28, 26, 24],
+        input: [32, 29, 26, 24],
         output: { increase: 0, mac: 1, trackpad: 1 }
     },
     {
-        input: [28, 26, 24, 22],
+        input: [0, 0, 0, 22],
         output: { increase: 0, mac: 1, trackpad: 1 }
     },
     {
-        input: [26, 24, 22, 20],
+        input: [0, 0, 22, 20],
         output: { increase: 0, mac: 1, trackpad: 1 }
     },
     {
-        input: [24, 22, 20, 19],
+        input: [0, 22, 20, 19],
         output: { increase: 0, mac: 1, trackpad: 1 }
     },
     {
@@ -236,6 +264,10 @@ module.exports = [
         output: { increase: 0, mac: 1, trackpad: 1 }
     },
     {
+        input: [2, 2, 2, 2],
+        output: { increase: 0, mac: 1, trackpad: 1 }
+    },
+    {
         input: [2, 2, 2, 1],
         output: { increase: 0, mac: 1, trackpad: 1 }
     },
@@ -260,15 +292,99 @@ module.exports = [
         output: { increase: 0, mac: 1, trackpad: 1 }
     },
     {
-        input: [1, 1, 1, 1],
+        input: [0, 0, 0, 1],
         output: { increase: 0, mac: 1, trackpad: 1 }
     },
     {
-        input: [1, 1, 1, 1],
+        input: [0, 0, 1, 1],
         output: { increase: 0, mac: 1, trackpad: 1 }
     },
     {
-        input: [1, 1, 1, 1],
-        output: { increase: 0, mac: 1, trackpad: 1 }
+        input: [0, 0, 0, 4.000244140625],
+        output: { increase: 0, mac: 1, trackpad: 0 }
+    },
+    {
+        input: [0, 0, 4.000244140625, 39.96826171875],
+        output: { increase: 1, mac: 1, trackpad: 0 }
+    },
+    {
+        input: [0, 4.000244140625, 39.96826171875, 168.0902099609375],
+        output: { increase: 1, mac: 1, trackpad: 0 }
+    },
+    {
+        input: [
+            4.000244140625,
+            39.96826171875,
+            168.0902099609375,
+            529.4293212890625
+        ],
+        output: { increase: 1, mac: 1, trackpad: 0 }
+    },
+    {
+        input: [
+            39.96826171875,
+            168.0902099609375,
+            529.4293212890625,
+            329.59716796875
+        ],
+        output: { increase: 0, mac: 1, trackpad: 0 }
+    },
+    {
+        input: [
+            168.0902099609375,
+            529.4293212890625,
+            329.59716796875,
+            349.1046142578125
+        ],
+        output: { increase: 0, mac: 1, trackpad: 0 }
+    },
+    {
+        input: [
+            529.4293212890625,
+            329.59716796875,
+            349.1046142578125,
+            363.253173828125
+        ],
+        output: { increase: 0, mac: 1, trackpad: 0 }
+    },
+    { input: [0, 0, 0, 100], output: { increase: 0, mac: 0, trackpad: 0 } },
+    { input: [0, 0, 100, 100], output: { increase: 0, mac: 0, trackpad: 0 } },
+    { input: [0, 100, 100, 200], output: { increase: 1, mac: 0, trackpad: 0 } },
+    {
+        input: [100, 100, 200, 200],
+        output: { increase: 0, mac: 0, trackpad: 0 }
+    },
+    {
+        input: [100, 200, 200, 200],
+        output: { increase: 1, mac: 0, trackpad: 0 }
+    },
+    { input: [0, 0, 0, 100], output: { increase: 0, mac: 0, trackpad: 0 } },
+    { input: [0, 0, 100, 200], output: { increase: 1, mac: 0, trackpad: 0 } },
+    { input: [0, 100, 200, 100], output: { increase: 0, mac: 0, trackpad: 0 } },
+    {
+        input: [100, 200, 100, 200],
+        output: { increase: 1, mac: 0, trackpad: 0 }
+    },
+    {
+        input: [200, 100, 200, 200],
+        output: { increase: 1, mac: 0, trackpad: 0 }
+    },
+    { input: [0, 0, 0, 100], output: { increase: 0, mac: 0, trackpad: 0 } },
+    { input: [0, 0, 100, 100], output: { increase: 0, mac: 0, trackpad: 0 } },
+    { input: [0, 100, 100, 100], output: { increase: 0, mac: 0, trackpad: 0 } },
+    {
+        input: [100, 100, 100, 300],
+        output: { increase: 1, mac: 0, trackpad: 0 }
+    },
+    {
+        input: [100, 100, 300, 200],
+        output: { increase: 0, mac: 0, trackpad: 0 }
+    },
+    { input: [0, 0, 0, 300], output: { increase: 1, mac: 0, trackpad: 0 } },
+    { input: [0, 0, 300, 100], output: { increase: 0, mac: 0, trackpad: 0 } },
+    { input: [0, 300, 100, 300], output: { increase: 1, mac: 0, trackpad: 0 } },
+    {
+        input: [300, 100, 300, 100],
+        output: { increase: 0, mac: 0, trackpad: 0 }
     }
 ];
