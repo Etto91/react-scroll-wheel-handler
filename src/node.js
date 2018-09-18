@@ -1,5 +1,5 @@
 const brain = require("brain.js");
-const values = require("./newFile");
+const values = require("./scrollValuesForModelTrain");
 const network = new brain.NeuralNetwork();
 // console.log(values);
 network.train(values);
