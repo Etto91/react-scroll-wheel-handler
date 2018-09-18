@@ -17,6 +17,7 @@
         "url": "https://github.com/Etto91/react-scroll-wheel-handler/issues"
     },
     "dependencies": {
+        "brain.js": "^1.2.8",
         "react": "^16.2.0"
     },
     "devDependencies": {

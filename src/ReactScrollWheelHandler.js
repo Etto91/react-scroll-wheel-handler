@@ -1,5 +1,7 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
+import IncreaseModel from "./IncreaseOrDecreaseModel";
+console.log(IncreaseModel);
 
 class ReactScrollWheelHandler extends Component {
     constructor(props) {
@@ -8,6 +10,9 @@ class ReactScrollWheelHandler extends Component {
         this.nScrolling = [];
         this.firedEvent = false;
         this.onTimeout = false;
+        this.scrollTime = 0;
+        this.trainData = [];
+        this.dataString = "";
     }
 
     componentDidMount = () => {
@@ -38,30 +43,65 @@ class ReactScrollWheelHandler extends Component {
 
         this.timer = setTimeout(() => {
             this.onTimeout = false;
+            console.log("clearTimeout");
         }, timeout);
+    };
+
+    setTrainData = value => {
+        if (this.trainData.length + 1 < 4) {
+            this.trainData.push(value);
+
+            while (this.trainData.length < 4) {
+                this.trainData.unshift(0);
+            }
+
+            return;
+        }
+
+        this.trainData.push(value);
+
+        this.trainData.shift();
+
+        return;
     };
 
     handleWheelScroll = e => {
         const { pauseListeners, timeout, upHandler, downHandler } = this.props;
-
         const now = new Date().getTime();
-
-        const value = -e.deltaY;
-        const signScroll = Math.max(-1, Math.min(1, value));
-
-        this.nScrolling.push(Math.abs(value));
-
         const diffTime = now - this.lastScroll;
-        this.lastScroll = now;
-
-        if (diffTime > 200) {
-            this.nScrolling = [];
+        if (!isNaN(this.lastScroll)) {
+            this.scrollTime += diffTime;
         }
 
-        const medianEnd = this.getMedian(this.nScrolling, 10);
-        const medianMiddle = this.getMedian(this.nScrolling, 70);
-        const increase = medianEnd >= medianMiddle;
-        if (increase && !this.firedEvent && !pauseListeners) {
+        this.lastScroll = now;
+
+        const value = e.wheelDelta || -e.deltaY || -e.detail;
+        const signScroll = Math.max(-1, Math.min(1, value));
+
+        this.setTrainData(Math.abs(value));
+        const { increase, mac, trackpad } = IncreaseModel(this.trainData);
+
+        if (!this.firedEvent && !pauseListeners && diffTime > 300) {
+            console.log("new scroll");
+            this.trainData = [];
+            this.scrollTime = 0;
+        }
+
+        const data = {
+            input: this.trainData,
+            output: { increase: 0, mac: 0, trackpad: 0 }
+        };
+        this.dataString += JSON.stringify(data) + ",";
+        localStorage.dataString = this.dataString;
+        // console.log(this.trainData);
+
+        // if (diffTime !== now) {
+        //     this.scrollTime += diffTime;
+        // }
+
+        const increasePercent = (increase * 100).toFixed(2);
+        console.log(increasePercent, mac, trackpad);
+        if (increasePercent > 40 && !this.firedEvent && !pauseListeners) {
             this.firedEvent = true;
 
             if (timeout) {
@@ -146,20 +186,6 @@ class ReactScrollWheelHandler extends Component {
                 this.startTimeout();
             }
         }
-    };
-
-    getMedian = (elements, number) => {
-        let sum = 0;
-        const lastElements = elements.slice(
-            Math.max(elements.length - number, 1)
-        );
-
-        lastElements.map(element => {
-            sum += element;
-            return element;
-        });
-
-        return Math.ceil(sum / number);
     };
 
     unify = e => {
