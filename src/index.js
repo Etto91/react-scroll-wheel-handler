@@ -48,16 +48,7 @@ class App extends React.Component {
                         transition: "background-color .4s ease-out"
                     }}
                 >
-                    <button
-                        onClick={() => {
-                            console.log("click");
-                            this.setState({
-                                blockScroll: !this.state.blockScroll
-                            });
-                        }}
-                    >
-                        ACTIVE
-                    </button>
+                    <h1>SCROLL TO CHANGE BACKGROUND COLOR</h1>
                 </ReactScrollWheelHandler>
             </div>
         );

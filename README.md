@@ -8,7 +8,11 @@ Simple react component for handling scroll trackpad, arrow keys, swipe gestures 
 
 # Demo
 
-[Live Demo](https://codepen.io/ettore-panini/pen/xaXEmK?editors=1011)
+[Live Demo](https://react-scroll-wheel.herokuapp.com/)
+
+#Update
+
+-   **1.0.0**: change function to check when mouse/trackpad value increase (fix windows scroll)
 
 # Usage
 

@@ -1031,8 +1031,6 @@ var App = function (_React$Component) {
         key: "render",
         value: function () {
             function render() {
-                var _this2 = this;
-
                 var _state = this.state,
                     colors = _state.colors,
                     currentIndex = _state.currentIndex;
@@ -1053,20 +1051,9 @@ var App = function (_React$Component) {
                             }
                         },
                         __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                            "button",
-                            {
-                                onClick: function () {
-                                    function onClick() {
-                                        console.log("click");
-                                        _this2.setState({
-                                            blockScroll: !_this2.state.blockScroll
-                                        });
-                                    }
-
-                                    return onClick;
-                                }()
-                            },
-                            "ACTIVE"
+                            "h1",
+                            null,
+                            "SCROLL TO CHANGE BACKGROUND COLOR"
                         )
                     )
                 );
