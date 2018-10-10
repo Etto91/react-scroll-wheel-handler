@@ -249,14 +249,15 @@ class ReactScrollWheelHandler extends Component {
         } else {
             let s = Math.sign(swipeY);
             if (s < 0) {
-                if (upHandler) {
-                    upHandler();
+                if (downHandler) {
+                    downHandler();
                 }
             }
 
             if (s > 0) {
-                if (downHandler) {
-                    downHandler();
+                
+                if (upHandler) {
+                    upHandler();
                 }
             }
         }
