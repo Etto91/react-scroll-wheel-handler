@@ -45,7 +45,7 @@ class App extends React.Component {
                         width: "100%",
                         height: "100vh",
                         backgroundColor: colors[currentIndex],
-                        transition: "background-color .4s ease-out"
+                        transition: "background-color .6s ease-out"
                     }}
                 >
                     <h1>SCROLL TO CHANGE BACKGROUND COLOR</h1>

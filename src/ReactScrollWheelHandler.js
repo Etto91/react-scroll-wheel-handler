@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 import IncreaseModel from "./IncreaseOrDecreaseModel";
-console.log(IncreaseModel);
 
 class ReactScrollWheelHandler extends Component {
     constructor(props) {
@@ -13,6 +12,7 @@ class ReactScrollWheelHandler extends Component {
         this.scrollTime = 0;
         this.trainData = [];
         this.dataString = "";
+        this.isSafari = false;
     }
 
     componentDidMount = () => {
@@ -22,6 +22,9 @@ class ReactScrollWheelHandler extends Component {
                 passive: true
             });
         }
+        this.isSafari = /^((?!chrome|android).)*safari/i.test(
+            navigator.userAgent
+        );
     };
 
     componentWillUnmount = () => {
@@ -43,6 +46,7 @@ class ReactScrollWheelHandler extends Component {
 
         this.timer = setTimeout(() => {
             this.onTimeout = false;
+            this.firedEvent = false;
             console.log("clearTimeout");
         }, timeout);
     };
@@ -69,6 +73,7 @@ class ReactScrollWheelHandler extends Component {
         const { pauseListeners, timeout, upHandler, downHandler } = this.props;
         const now = new Date().getTime();
         const diffTime = now - this.lastScroll;
+
         if (!isNaN(this.lastScroll)) {
             this.scrollTime += diffTime;
         }
@@ -80,7 +85,6 @@ class ReactScrollWheelHandler extends Component {
 
         this.setTrainData(Math.abs(value));
         const { increase, mac, trackpad } = IncreaseModel(this.trainData);
-
         if (!this.firedEvent && !pauseListeners && diffTime > 200) {
             console.log("new scroll");
             this.trainData = [];
@@ -100,8 +104,12 @@ class ReactScrollWheelHandler extends Component {
         // }
 
         const increasePercent = (increase * 100).toFixed(2);
-        console.log(increasePercent, mac, trackpad);
-        if (increasePercent > 46 && !this.firedEvent && !pauseListeners) {
+        console.log(increasePercent > 46 || this.isSafari, this.firedEvent);
+        if (
+            (increasePercent > 46 || this.isSafari) &&
+            !this.firedEvent &&
+            !pauseListeners
+        ) {
             this.firedEvent = true;
 
             if (timeout) {
@@ -322,7 +330,7 @@ ReactScrollWheelHandler.propTypes = {
 
 ReactScrollWheelHandler.defaultProps = {
     pauseListeners: false,
-    timeout: 700,
+    timeout: 600,
     disableKeyboard: false
 };
 
