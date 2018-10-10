@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
-import IncreaseModel from "./IncreaseOrDecreaseModel";
 
 class ReactScrollWheelHandler extends Component {
     constructor(props) {
@@ -84,29 +83,16 @@ class ReactScrollWheelHandler extends Component {
         const signScroll = Math.max(-1, Math.min(1, value));
 
         this.setTrainData(Math.abs(value));
-        const { increase } = IncreaseModel(this.trainData);
+        console.log(this.checkIfIncrease(this.trainData));
         if (!this.firedEvent && !pauseListeners && diffTime > 200) {
-            console.log("new scroll");
-            this.trainData = [];
             this.scrollTime = 0;
         }
 
-        // const data = {
-        //     input: this.trainData,
-        //     output: { increase: 0, mac: 0, trackpad: 0 }
-        // };
-        // this.dataString += JSON.stringify(data) + ",";
-        // localStorage.dataString = this.dataString;
-        // console.log(this.trainData);
-
-        // if (diffTime !== now) {
-        //     this.scrollTime += diffTime;
-        // }
-
-        const increasePercent = (increase * 100).toFixed(2);
-        // console.log(increasePercent);
-        // console.log(this.trainData);
-        if (increasePercent > 40 && !this.firedEvent && !pauseListeners) {
+        if (
+            this.checkIfIncrease(this.trainData) &&
+            !this.firedEvent &&
+            !pauseListeners
+        ) {
             this.firedEvent = true;
 
             if (timeout) {
@@ -137,6 +123,19 @@ class ReactScrollWheelHandler extends Component {
         }
 
         this.firedEvent = false;
+    };
+
+    checkIfIncrease = data => {
+        console.log(data);
+        if (data[data.length - 1] <= data[data.length - 2]) {
+            return false;
+        }
+
+        if (data[data.length - 2] <= data[data.length - 3]) {
+            return false;
+        }
+
+        return true;
     };
 
     handleKeyPress = e => {
