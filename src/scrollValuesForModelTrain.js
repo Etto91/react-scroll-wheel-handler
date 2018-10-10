@@ -4,6 +4,22 @@ module.exports = [
         output: { increase: 0, mac: 1, trackpad: 1 }
     },
     {
+        input: [0, 0, 0, 13],
+        output: { increase: 0, mac: 1, trackpad: 1 }
+    },
+    {
+        input: [0, 0, 0, 45],
+        output: { increase: 0, mac: 1, trackpad: 1 }
+    },
+    {
+        input: [0, 0, 0, 24],
+        output: { increase: 0, mac: 1, trackpad: 1 }
+    },
+    {
+        input: [0, 0, 0, 169],
+        output: { increase: 0, mac: 1, trackpad: 1 }
+    },
+    {
         input: [0, 0, 1, 9],
         output: { increase: 1, mac: 1, trackpad: 1 }
     },
@@ -32,7 +48,15 @@ module.exports = [
         output: { increase: 0, mac: 1, trackpad: 1 }
     },
     {
-        input: [155, 169, 163, 153],
+        input: [155, 169, 163, 193],
+        output: { increase: 0, mac: 1, trackpad: 1 }
+    },
+    {
+        input: [155, 169, 163, 423],
+        output: { increase: 0, mac: 1, trackpad: 1 }
+    },
+    {
+        input: [155, 169, 163, 223],
         output: { increase: 0, mac: 1, trackpad: 1 }
     },
     {
@@ -345,46 +369,46 @@ module.exports = [
             349.1046142578125,
             363.253173828125
         ],
-        output: { increase: 0, mac: 1, trackpad: 0 }
-    },
-    { input: [0, 0, 0, 100], output: { increase: 0, mac: 0, trackpad: 0 } },
-    { input: [0, 0, 100, 100], output: { increase: 0, mac: 0, trackpad: 0 } },
-    { input: [0, 100, 100, 200], output: { increase: 1, mac: 0, trackpad: 0 } },
-    {
-        input: [100, 100, 200, 200],
-        output: { increase: 0, mac: 0, trackpad: 0 }
-    },
-    {
-        input: [100, 200, 200, 200],
-        output: { increase: 1, mac: 0, trackpad: 0 }
-    },
-    { input: [0, 0, 0, 100], output: { increase: 0, mac: 0, trackpad: 0 } },
-    { input: [0, 0, 100, 200], output: { increase: 1, mac: 0, trackpad: 0 } },
-    { input: [0, 100, 200, 100], output: { increase: 0, mac: 0, trackpad: 0 } },
-    {
-        input: [100, 200, 100, 200],
-        output: { increase: 1, mac: 0, trackpad: 0 }
-    },
-    {
-        input: [200, 100, 200, 200],
-        output: { increase: 1, mac: 0, trackpad: 0 }
-    },
-    { input: [0, 0, 0, 100], output: { increase: 0, mac: 0, trackpad: 0 } },
-    { input: [0, 0, 100, 100], output: { increase: 0, mac: 0, trackpad: 0 } },
-    { input: [0, 100, 100, 100], output: { increase: 0, mac: 0, trackpad: 0 } },
-    {
-        input: [100, 100, 100, 300],
-        output: { increase: 1, mac: 0, trackpad: 0 }
-    },
-    {
-        input: [100, 100, 300, 200],
-        output: { increase: 0, mac: 0, trackpad: 0 }
-    },
-    { input: [0, 0, 0, 300], output: { increase: 1, mac: 0, trackpad: 0 } },
-    { input: [0, 0, 300, 100], output: { increase: 0, mac: 0, trackpad: 0 } },
-    { input: [0, 300, 100, 300], output: { increase: 1, mac: 0, trackpad: 0 } },
-    {
-        input: [300, 100, 300, 100],
-        output: { increase: 0, mac: 0, trackpad: 0 }
+        output: { increase: 1, mac: 1, trackpad: 0 }
     }
+    // { input: [0, 0, 0, 100], output: { increase: 0, mac: 0, trackpad: 0 } },
+    // { input: [0, 0, 100, 100], output: { increase: 0, mac: 0, trackpad: 0 } },
+    // { input: [0, 100, 100, 200], output: { increase: 1, mac: 0, trackpad: 0 } },
+    // {
+    //     input: [100, 100, 200, 200],
+    //     output: { increase: 0, mac: 0, trackpad: 0 }
+    // },
+    // {
+    //     input: [100, 200, 200, 200],
+    //     output: { increase: 1, mac: 0, trackpad: 0 }
+    // },
+    // { input: [0, 0, 0, 100], output: { increase: 0, mac: 0, trackpad: 0 } },
+    // { input: [0, 0, 100, 200], output: { increase: 1, mac: 0, trackpad: 0 } },
+    // { input: [0, 100, 200, 100], output: { increase: 0, mac: 0, trackpad: 0 } },
+    // {
+    //     input: [100, 200, 100, 200],
+    //     output: { increase: 1, mac: 0, trackpad: 0 }
+    // },
+    // {
+    //     input: [200, 100, 200, 200],
+    //     output: { increase: 1, mac: 0, trackpad: 0 }
+    // },
+    // { input: [0, 0, 0, 100], output: { increase: 0, mac: 0, trackpad: 0 } },
+    // { input: [0, 0, 100, 100], output: { increase: 0, mac: 0, trackpad: 0 } },
+    // { input: [0, 100, 100, 100], output: { increase: 0, mac: 0, trackpad: 0 } },
+    // {
+    //     input: [100, 100, 100, 300],
+    //     output: { increase: 1, mac: 0, trackpad: 0 }
+    // },
+    // {
+    //     input: [100, 100, 300, 200],
+    //     output: { increase: 0, mac: 0, trackpad: 0 }
+    // },
+    // { input: [0, 0, 0, 300], output: { increase: 1, mac: 0, trackpad: 0 } },
+    // { input: [0, 0, 300, 100], output: { increase: 0, mac: 0, trackpad: 0 } },
+    // { input: [0, 300, 100, 300], output: { increase: 1, mac: 0, trackpad: 0 } },
+    // {
+    //     input: [300, 100, 300, 100],
+    //     output: { increase: 0, mac: 0, trackpad: 0 }
+    // }
 ];

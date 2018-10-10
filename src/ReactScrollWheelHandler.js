@@ -84,7 +84,7 @@ class ReactScrollWheelHandler extends Component {
         const signScroll = Math.max(-1, Math.min(1, value));
 
         this.setTrainData(Math.abs(value));
-        const { increase, mac, trackpad } = IncreaseModel(this.trainData);
+        const { increase } = IncreaseModel(this.trainData);
         if (!this.firedEvent && !pauseListeners && diffTime > 200) {
             console.log("new scroll");
             this.trainData = [];
@@ -104,12 +104,9 @@ class ReactScrollWheelHandler extends Component {
         // }
 
         const increasePercent = (increase * 100).toFixed(2);
-        console.log(
-            increasePercent > 46 || this.isSafari,
-            this.firedEvent,
-            this.trainData
-        );
-        if (increasePercent > 46 && !this.firedEvent && !pauseListeners) {
+        // console.log(increasePercent);
+        // console.log(this.trainData);
+        if (increasePercent > 40 && !this.firedEvent && !pauseListeners) {
             this.firedEvent = true;
 
             if (timeout) {
@@ -276,7 +273,6 @@ class ReactScrollWheelHandler extends Component {
             customStyle,
             upHandler,
             downHandler,
-            waitEndScroll,
             pauseListeners,
             disableKeyboard,
             ...otherProps
@@ -330,7 +326,7 @@ ReactScrollWheelHandler.propTypes = {
 
 ReactScrollWheelHandler.defaultProps = {
     pauseListeners: false,
-    timeout: 600,
+    timeout: 700,
     disableKeyboard: false
 };
 

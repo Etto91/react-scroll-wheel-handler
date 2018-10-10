@@ -6,5 +6,5 @@ network.train(values);
 
 console.log(network.toFunction().toString());
 
-const result = network.run([0, 10, 40, 20]);
+const result = network.run([20, 19, 17, 43]);
 console.log(result);
