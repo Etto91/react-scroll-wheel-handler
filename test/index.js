@@ -20770,14 +20770,15 @@ var ReactScrollWheelHandler = function (_Component) {
             } else {
                 var _s = Math.sign(swipeY);
                 if (_s < 0) {
-                    if (upHandler) {
-                        upHandler();
+                    if (downHandler) {
+                        downHandler();
                     }
                 }
 
                 if (_s > 0) {
-                    if (downHandler) {
-                        downHandler();
+
+                    if (upHandler) {
+                        upHandler();
                     }
                 }
             }
