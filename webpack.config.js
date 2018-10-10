@@ -40,7 +40,17 @@ const buildConfig = {
     },
 
     plugins: [
-        ...(process.env.BUILD ? [new webpack.optimize.UglifyJsPlugin()] : [])
+        ...(process.env.BUILD
+            ? [
+                  new webpack.optimize.UglifyJsPlugin({
+                      compress: {
+                          warnings: false,
+
+                          drop_console: true
+                      }
+                  })
+              ]
+            : [])
     ]
 };
 

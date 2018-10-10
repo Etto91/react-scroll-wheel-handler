@@ -104,12 +104,12 @@ class ReactScrollWheelHandler extends Component {
         // }
 
         const increasePercent = (increase * 100).toFixed(2);
-        console.log(increasePercent > 46 || this.isSafari, this.firedEvent);
-        if (
-            (increasePercent > 46 || this.isSafari) &&
-            !this.firedEvent &&
-            !pauseListeners
-        ) {
+        console.log(
+            increasePercent > 46 || this.isSafari,
+            this.firedEvent,
+            this.trainData
+        );
+        if (increasePercent > 46 && !this.firedEvent && !pauseListeners) {
             this.firedEvent = true;
 
             if (timeout) {
@@ -255,7 +255,6 @@ class ReactScrollWheelHandler extends Component {
             }
 
             if (s > 0) {
-                
                 if (upHandler) {
                     upHandler();
                 }
