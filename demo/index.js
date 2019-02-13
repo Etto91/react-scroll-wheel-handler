@@ -1,6 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import ReactScrollWheelHandler from "./ReactScrollWheelHandler";
+import ReactScrollWheelHandler from "react-scroll-wheel-handler";
 
 import styled from "styled-components";
 
