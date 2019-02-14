@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
+import Lethargy from "exports-loader?this.Lethargy!lethargy/lethargy";
 
 class ReactScrollWheelHandler extends Component {
     constructor(props) {
@@ -11,7 +12,7 @@ class ReactScrollWheelHandler extends Component {
         this.scrollTime = 0;
         this.trainData = [];
         this.dataString = "";
-        this.isSafari = false;
+        this.Lethargy = new Lethargy();
     }
 
     componentDidMount = () => {
@@ -21,9 +22,6 @@ class ReactScrollWheelHandler extends Component {
                 passive: true
             });
         }
-        this.isSafari = /^((?!chrome|android).)*safari/i.test(
-            navigator.userAgent
-        );
     };
 
     componentWillUnmount = () => {
@@ -46,7 +44,6 @@ class ReactScrollWheelHandler extends Component {
         this.timer = setTimeout(() => {
             this.onTimeout = false;
             this.firedEvent = false;
-            console.log("clearTimeout");
         }, timeout);
     };
 
@@ -69,43 +66,25 @@ class ReactScrollWheelHandler extends Component {
     };
 
     handleWheelScroll = e => {
+        e.preventDefault();
+        e.stopPropagation();
         const { pauseListeners, timeout, upHandler, downHandler } = this.props;
-        const now = new Date().getTime();
-        const diffTime = now - this.lastScroll;
+        const scrollSign = this.Lethargy.check(e);
 
-        if (!isNaN(this.lastScroll)) {
-            this.scrollTime += diffTime;
-        }
-
-        this.lastScroll = now;
-
-        const value = e.wheelDelta || -e.deltaY || -e.detail;
-        const signScroll = Math.max(-1, Math.min(1, value));
-
-        this.setTrainData(Math.abs(value));
-        console.log(this.checkIfIncrease(this.trainData));
-        if (!this.firedEvent && !pauseListeners && diffTime > 200) {
-            this.scrollTime = 0;
-        }
-
-        if (
-            this.checkIfIncrease(this.trainData) &&
-            !this.firedEvent &&
-            !pauseListeners
-        ) {
+        if (scrollSign !== false && !this.firedEvent && !pauseListeners) {
             this.firedEvent = true;
 
             if (timeout) {
                 this.startTimeout();
             }
-            if (signScroll > 0) {
+            if (scrollSign > 0) {
                 if (upHandler) {
                     upHandler();
                 }
                 return;
             }
 
-            if (signScroll < 0) {
+            if (scrollSign < 0) {
                 if (downHandler) {
                     downHandler();
                 }
@@ -123,19 +102,6 @@ class ReactScrollWheelHandler extends Component {
         }
 
         this.firedEvent = false;
-    };
-
-    checkIfIncrease = data => {
-        console.log(data);
-        if (data[data.length - 1] <= data[data.length - 2]) {
-            return false;
-        }
-
-        if (data[data.length - 2] <= data[data.length - 3]) {
-            return false;
-        }
-
-        return true;
     };
 
     handleKeyPress = e => {

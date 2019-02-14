@@ -2,11 +2,11 @@ const path = require("path");
 const webpack = require("webpack");
 
 const outputPath = process.env.BUILD
-    ? path.resolve("./")
+    ? path.resolve("./dist")
     : path.resolve("./test");
 
 const testConfig = {
-    entry: "./src/index.js",
+    entry: "./demo/index.js",
     output: {
         path: outputPath,
         filename: "index.js"
@@ -15,7 +15,7 @@ const testConfig = {
         rules: [
             {
                 loader: "babel-loader",
-                include: [path.resolve("./src")]
+                include: [path.resolve("./demo")]
             }
         ]
     }
@@ -26,7 +26,7 @@ const buildConfig = {
 
     output: {
         path: outputPath,
-        filename: "index.js",
+        filename: "ReactScrollWheelHandler.js",
         libraryTarget: "commonjs2"
     },
     module: {
@@ -37,6 +37,9 @@ const buildConfig = {
                 exclude: /node_modules/
             }
         ]
+    },
+    externals: {
+        react: "react"
     },
 
     plugins: [
