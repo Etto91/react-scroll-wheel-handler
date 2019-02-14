@@ -38,6 +38,9 @@ const buildConfig = {
             }
         ]
     },
+    externals: {
+        react: "react"
+    },
 
     plugins: [
         ...(process.env.BUILD
