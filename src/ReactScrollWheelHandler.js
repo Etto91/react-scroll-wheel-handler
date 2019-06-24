@@ -66,7 +66,6 @@ class ReactScrollWheelHandler extends Component {
     };
 
     handleWheelScroll = e => {
-        e.preventDefault();
         e.stopPropagation();
         const { pauseListeners, timeout, upHandler, downHandler } = this.props;
         const scrollSign = this.Lethargy.check(e);
