@@ -1,6 +1,6 @@
 {
     "name": "react-scroll-wheel-handler",
-    "version": "1.0.7",
+    "version": "1.0.8",
     "description": "Simple react component for handling scroll trackpad, arrow keys, swipe gestures and mouse wheel event.",
     "main": "dist/ReactScrollWheelHandler.js",
     "scripts": {
