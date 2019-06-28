@@ -166,6 +166,8 @@ class ReactScrollWheelHandler extends Component {
         this.startY = this.unify(e).clientY;
     };
 
+    sign = number => (number ? (number < 0 ? -1 : 1) : 0);
+
     handleSwipeEnd = e => {
         const {
             leftHandler,
@@ -195,7 +197,7 @@ class ReactScrollWheelHandler extends Component {
         }
 
         if (Math.abs(swipeX) > Math.abs(swipeY)) {
-            let s = Math.sign(swipeX);
+            let s = this.sign(swipeX);
             if (s < 0) {
                 if (leftHandler) {
                     leftHandler();
@@ -208,7 +210,7 @@ class ReactScrollWheelHandler extends Component {
                 }
             }
         } else {
-            let s = Math.sign(swipeY);
+            let s = this.sign(swipeY);
             if (s < 0) {
                 if (downHandler) {
                     downHandler();
