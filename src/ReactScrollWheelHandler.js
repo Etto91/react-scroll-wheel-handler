@@ -252,6 +252,8 @@ class ReactScrollWheelHandler extends Component {
             customStyle,
             upHandler,
             downHandler,
+            leftHandler,
+            rightHandler,
             pauseListeners,
             disableKeyboard,
             preventScroll,
