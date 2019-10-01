@@ -52,6 +52,7 @@ import ReactScrollWheelHandler from "react-scroll-wheel-handler";
 -   **pauseListeners**: Boolean. isRequired. Default: false. With this props you can block all events from be fired
 -   **timeout**: Integer. isRequired. Default: 600. Timeout between scroll.
 -   **disableKeyboard**: Boolean. Default: false.
+-   **preventScroll**: Boolean. isRequired. Prevent scroll, if you want to implement your own scrolling. Default: false.
 
 All the other props are passed to the div/component returned.
 
