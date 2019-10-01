@@ -13,6 +13,7 @@ class ReactScrollWheelHandler extends Component {
         this.trainData = [];
         this.dataString = "";
         this.Lethargy = new Lethargy();
+        this.containerRef = React.createRef();
     }
 
     componentDidMount = () => {
@@ -22,6 +23,10 @@ class ReactScrollWheelHandler extends Component {
                 passive: true
             });
         }
+
+        if (this.containerRef.current) {
+            this.containerRef.current.addEventListener('wheel', this.handleWheelScroll, {passive: false})
+        }
     };
 
     componentWillUnmount = () => {
@@ -30,6 +35,10 @@ class ReactScrollWheelHandler extends Component {
             document.removeEventListener("keydown", this.handleKeyPress, {
                 passive: true
             });
+        }
+
+        if (this.containerRef.current) {
+            this.containerRef.current.removeEventListener('wheel', this.handleWheelScroll);
         }
 
         if (this.timer) {
@@ -67,6 +76,10 @@ class ReactScrollWheelHandler extends Component {
 
     handleWheelScroll = e => {
         e.stopPropagation();
+        if (this.props.preventScroll) {
+            e.preventDefault();
+        }
+        
         const { pauseListeners, timeout, upHandler, downHandler } = this.props;
         const scrollSign = this.Lethargy.check(e);
 
@@ -241,6 +254,7 @@ class ReactScrollWheelHandler extends Component {
             downHandler,
             pauseListeners,
             disableKeyboard,
+            preventScroll,
             ...otherProps
         } = this.props;
 
@@ -249,12 +263,12 @@ class ReactScrollWheelHandler extends Component {
                 <CustomContainerComponent
                     onKeyPress={this.handleKeyPress}
                     style={customStyle}
-                    onWheel={this.handleWheelScroll}
                     tabIndex="0"
                     onTouchStart={this.handleSwipeStart}
                     onMouseDown={this.handleSwipeStart}
                     onMouseUp={this.handleSwipeEnd}
                     onTouchEnd={this.handleSwipeEnd}
+                    ref={this.containerRef}
                     {...otherProps}
                 >
                     {children}
@@ -268,8 +282,8 @@ class ReactScrollWheelHandler extends Component {
                 onMouseUp={this.handleSwipeEnd}
                 onTouchEnd={this.handleSwipeEnd}
                 style={customStyle}
-                onWheel={this.handleWheelScroll}
                 tabIndex="0"
+                ref={this.containerRef}
                 {...otherProps}
             >
                 {children}
@@ -287,13 +301,15 @@ ReactScrollWheelHandler.propTypes = {
     CustomContainerComponent: PropTypes.func,
     pauseListeners: PropTypes.bool.isRequired,
     timeout: PropTypes.number,
-    disableKeyboard: PropTypes.bool.isRequired
+    disableKeyboard: PropTypes.bool.isRequired,
+    preventScroll: PropTypes.bool.isRequired
 };
 
 ReactScrollWheelHandler.defaultProps = {
     pauseListeners: false,
     timeout: 700,
-    disableKeyboard: false
+    disableKeyboard: false,
+    preventScroll: false,
 };
 
 export default ReactScrollWheelHandler;
