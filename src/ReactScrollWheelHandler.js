@@ -5,13 +5,8 @@ import Lethargy from "exports-loader?this.Lethargy!lethargy/lethargy";
 class ReactScrollWheelHandler extends Component {
     constructor(props) {
         super(props);
-        this.lastScroll;
-        this.nScrolling = [];
         this.firedEvent = false;
         this.onTimeout = false;
-        this.scrollTime = 0;
-        this.trainData = [];
-        this.dataString = "";
         this.Lethargy = new Lethargy();
         this.containerRef = React.createRef();
     }
@@ -25,7 +20,11 @@ class ReactScrollWheelHandler extends Component {
         }
 
         if (this.containerRef.current) {
-            this.containerRef.current.addEventListener('wheel', this.handleWheelScroll, {passive: false})
+            this.containerRef.current.addEventListener(
+                "wheel",
+                this.handleWheelScroll,
+                { passive: false }
+            );
         }
     };
 
@@ -38,7 +37,10 @@ class ReactScrollWheelHandler extends Component {
         }
 
         if (this.containerRef.current) {
-            this.containerRef.current.removeEventListener('wheel', this.handleWheelScroll);
+            this.containerRef.current.removeEventListener(
+                "wheel",
+                this.handleWheelScroll
+            );
         }
 
         if (this.timer) {
@@ -56,30 +58,12 @@ class ReactScrollWheelHandler extends Component {
         }, timeout);
     };
 
-    setTrainData = value => {
-        if (this.trainData.length + 1 < 4) {
-            this.trainData.push(value);
-
-            while (this.trainData.length < 4) {
-                this.trainData.unshift(0);
-            }
-
-            return;
-        }
-
-        this.trainData.push(value);
-
-        this.trainData.shift();
-
-        return;
-    };
-
     handleWheelScroll = e => {
         e.stopPropagation();
         if (this.props.preventScroll) {
             e.preventDefault();
         }
-        
+
         const { pauseListeners, timeout, upHandler, downHandler } = this.props;
         const scrollSign = this.Lethargy.check(e);
 
@@ -311,7 +295,7 @@ ReactScrollWheelHandler.defaultProps = {
     pauseListeners: false,
     timeout: 700,
     disableKeyboard: false,
-    preventScroll: false,
+    preventScroll: false
 };
 
 export default ReactScrollWheelHandler;
