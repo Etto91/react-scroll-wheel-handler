@@ -75,14 +75,14 @@ class ReactScrollWheelHandler extends Component {
             }
             if (scrollSign > 0) {
                 if (upHandler) {
-                    upHandler();
+                    upHandler(e);
                 }
                 return;
             }
 
             if (scrollSign < 0) {
                 if (downHandler) {
-                    downHandler();
+                    downHandler(e);
                 }
             }
 
