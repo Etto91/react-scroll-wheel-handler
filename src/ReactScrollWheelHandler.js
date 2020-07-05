@@ -7,7 +7,7 @@ class ReactScrollWheelHandler extends Component {
         super(props);
         this.firedEvent = false;
         this.onTimeout = false;
-        this.Lethargy = new Lethargy();
+        this.Lethargy = new Lethargy(...this.props.wheelConfig);
         this.containerRef = React.createRef();
     }
 
@@ -288,14 +288,16 @@ ReactScrollWheelHandler.propTypes = {
     pauseListeners: PropTypes.bool.isRequired,
     timeout: PropTypes.number,
     disableKeyboard: PropTypes.bool.isRequired,
-    preventScroll: PropTypes.bool.isRequired
+    preventScroll: PropTypes.bool.isRequired,
+    wheelConfig: PropTypes.array
 };
 
 ReactScrollWheelHandler.defaultProps = {
     pauseListeners: false,
     timeout: 700,
     disableKeyboard: false,
-    preventScroll: false
+    preventScroll: false,
+    wheelConfig: []
 };
 
 export default ReactScrollWheelHandler;
