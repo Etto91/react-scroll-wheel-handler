@@ -27,15 +27,15 @@ Simple react component for handling scroll trackpad, arrow keys, swipe gestures 
 2. Import it:
 
 ```javascript
-import ReactScrollWheelHandler from 'react-scroll-wheel-handler';
+import ReactScrollWheelHandler from "react-scroll-wheel-handler";
 ```
 
 3. Config the component:
 
 ```javascript
 <ReactScrollWheelHandler
-  upHandler={e => console.log('scroll up')}
-  downHandler={e => console.log('scroll down')}
+  upHandler={(e) => console.log("scroll up")}
+  downHandler={(e) => console.log("scroll down")}
 >
   ...
 </ReactScrollWheelHandler>
@@ -60,13 +60,13 @@ All the other props are passed to the div/component returned.
 # Example
 
 ```javascript
-import React, { Component } from 'react';
-import ReactScrollWheelHandler from ' react-scroll-wheel-handler';
+import React, { Component } from "react";
+import ReactScrollWheelHandler from " react-scroll-wheel-handler";
 
 class App extends React.Component {
   state = {
     currentIndex: 0,
-    colors: ['red', 'black', 'grey', 'blue', 'green']
+    colors: ["red", "black", "grey", "blue", "green"],
   };
   nextIndex = () => {
     const { colors, currentIndex } = this.state;
@@ -75,7 +75,7 @@ class App extends React.Component {
     }
 
     return this.setState({
-      currentIndex: currentIndex + 1
+      currentIndex: currentIndex + 1,
     });
   };
 
@@ -83,12 +83,12 @@ class App extends React.Component {
     const { colors, currentIndex } = this.state;
     if (currentIndex == 0) {
       return this.setState({
-        currentIndex: colors.length - 1
+        currentIndex: colors.length - 1,
       });
     }
 
     return this.setState({
-      currentIndex: currentIndex - 1
+      currentIndex: currentIndex - 1,
     });
   };
 
@@ -100,13 +100,13 @@ class App extends React.Component {
           upHandler={this.prevIndex}
           downHandler={this.nextIndex}
           customStyle={{
-            width: '100%',
-            height: '100vh',
+            width: "100%",
+            height: "100vh",
             backgroundColor: colors[currentIndex],
-            transition: 'background-color .4s ease-out'
+            transition: "background-color .4s ease-out",
           }}
         >
-          <h1>CIAO</h1>
+          <h1>SCROLL FOR CHANGE BACKGROUND COLOR</h1>
         </ReactScrollWheelHandler>
       </div>
     );
