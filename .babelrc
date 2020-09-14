@@ -2,6 +2,14 @@
   "presets": ["@babel/preset-env", "@babel/preset-react"],
   "plugins": [
     "transform-object-assign",
-    "babel-plugin-transform-class-properties"
+    "babel-plugin-transform-class-properties",
+    [
+      "module-resolver",
+      {
+        "alias": {
+          "@leth": "exports-loader?this.Lethargy!lethargy/lethargy"
+        }
+      }
+    ]
   ]
 }
