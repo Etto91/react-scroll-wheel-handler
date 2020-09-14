@@ -12,6 +12,22 @@ Simple react component for handling scroll trackpad, arrow keys, swipe gestures 
 
 #Update
 
+- **2.0.0**:
+
+add prop disableSwipe.
+
+removed customStyle from props.
+
+Replace CustomContainerComponent with CustomComponent. It must have ref passed as a prop. Example:
+
+```javascript
+const CustomComponent = forwardRef(({ children, ...props }, ref) => (
+  <div ref={ref} {...props} id="custom">
+    {children}
+  </div>
+));
+```
+
 - **1.0.0**: change function to check when mouse/trackpad value increase (fix windows scroll)
 
 # Usage
@@ -47,11 +63,11 @@ import ReactScrollWheelHandler from "react-scroll-wheel-handler";
 - **downHandler**: Function that is triggered on scroll down
 - **leftHandler**: Function that is triggered on scroll left
 - **rightHandler**: Function that is triggered on scroll right
-- **customStyle**: Inline styles applied to the container component.
-- **CustomContainerComponent**: Function/Component. It will be rendered in place of the container div.
+- **CustomComponent**: Component with forwardRef. It will be rendered in place of the container div.
 - **pauseListeners**: Boolean. isRequired. Default: false. With this props you can block all events from be fired
 - **timeout**: Integer. isRequired. Default: 600. Timeout between scroll.
 - **disableKeyboard**: Boolean. Default: false.
+- **disableSwipe**: Boolean. Default: false.
 - **preventScroll**: Boolean. isRequired. Prevent scroll, if you want to implement your own scrolling. Default: false.
 - **wheelConfig**: Array. Default: []. Set config for Lethargy lib. Example: [7, 100, 0.05]. stability, sensitivity, tolerance.
 
@@ -99,7 +115,7 @@ class App extends React.Component {
         <ReactScrollWheelHandler
           upHandler={this.prevIndex}
           downHandler={this.nextIndex}
-          customStyle={{
+          style={{
             width: "100%",
             height: "100vh",
             backgroundColor: colors[currentIndex],

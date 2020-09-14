@@ -41,7 +41,7 @@ class App extends React.Component {
         <ReactScrollWheelHandler
           upHandler={this.prevIndex}
           downHandler={this.nextIndex}
-          customStyle={{
+          style={{
             width: "100%",
             height: "100vh",
             backgroundColor: colors[currentIndex],
@@ -54,11 +54,5 @@ class App extends React.Component {
     );
   }
 }
-
-const Test = styled.div`
-  width: "100%";
-  height: "100vh";
-  background-color: "blue";
-`;
 
 ReactDOM.render(<App />, document.getElementById("app"));
