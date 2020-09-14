@@ -5,16 +5,16 @@ name: Node.js CI
 
 on:
   push:
-    branches: [ master ]
+    branches: [master]
   pull_request:
-    branches: [ master ]
+    branches: [master]
 
 jobs:
   build:
-
     runs-on: ubuntu-latest
+    uses: actions/setup-node@v1
     steps:
-    - uses: actions/checkout@v2
-    - name: Test Component
-    - run: npm ci
-    - run: npm test
+      - uses: actions/checkout@v2
+      - name: Test Component
+      - run: npm install
+      - run: npm test
