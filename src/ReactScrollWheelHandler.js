@@ -13,9 +13,9 @@ class ReactScrollWheelHandler extends Component {
 
   componentDidMount = () => {
     const { disableKeyboard } = this.props;
-    if (!disableKeyboard) {
-      document.addEventListener("keydown", this.handleKeyPress, {
-        passive: true,
+    if (!disableKeyboard && this.containerRef.current) {
+      this.containerRef.current.addEventListener("keydown", this.handleKeyPress, {
+        passive: false,
       });
     }
     if (this.containerRef.current) {
@@ -29,10 +29,11 @@ class ReactScrollWheelHandler extends Component {
 
   componentWillUnmount = () => {
     const { disableKeyboard } = this.props;
-    if (!disableKeyboard) {
-      document.removeEventListener("keydown", this.handleKeyPress, {
-        passive: true,
-      });
+    if (!disableKeyboard && this.containerRef.current) {
+      this.containerRef.current.removeEventListener(
+        "keydown",
+        this.handleKeyPress
+      );
     }
 
     if (this.containerRef.current) {
@@ -119,7 +120,7 @@ class ReactScrollWheelHandler extends Component {
 
     if (e.keyCode === 38) {
       if (upHandler) {
-        upHandler();
+        upHandler(e);
       }
       if (timeout) {
         this.startTimeout();
@@ -128,7 +129,7 @@ class ReactScrollWheelHandler extends Component {
 
     if (e.keyCode === 37) {
       if (rightHandler) {
-        rightHandler();
+        rightHandler(e);
       }
       if (timeout) {
         this.startTimeout();
@@ -137,7 +138,7 @@ class ReactScrollWheelHandler extends Component {
 
     if (e.keyCode === 39) {
       if (leftHandler) {
-        leftHandler();
+        leftHandler(e);
       }
       if (timeout) {
         this.startTimeout();
@@ -146,7 +147,7 @@ class ReactScrollWheelHandler extends Component {
 
     if (e.keyCode === 40) {
       if (downHandler) {
-        downHandler();
+        downHandler(e);
       }
       if (timeout) {
         this.startTimeout();
