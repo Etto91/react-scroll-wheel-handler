@@ -1,5 +1,6 @@
 const path = require("path");
 const webpack = require("webpack");
+const CopyPlugin = require("copy-webpack-plugin");
 
 const outputPath = process.env.BUILD
   ? path.resolve("./dist")
@@ -43,18 +44,21 @@ const buildConfig = {
   },
   mode: process.env.BUILD ? "production" : "development",
 
-  // plugins: [
-  //   ...(process.env.BUILD
-  //     ? [
-  //         new webpack.optimize.UglifyJsPlugin({
-  //           compress: {
-  //             warnings: false,
-  //             drop_console: true,
-  //           },
-  //         }),
-  //       ]
-  //     : []),
-  // ],
+  plugins: [
+    new CopyPlugin({
+      patterns: [{ from: "src/index.d.ts", to: "." }],
+    }),
+    //   ...(process.env.BUILD
+    //     ? [
+    //         new webpack.optimize.UglifyJsPlugin({
+    //           compress: {
+    //             warnings: false,
+    //             drop_console: true,
+    //           },
+    //         }),
+    //       ]
+    //     : []),
+  ],
 };
 
 module.exports = process.env.BUILD ? buildConfig : testConfig;
