@@ -241,6 +241,7 @@ class ReactScrollWheelHandler extends Component {
       preventScroll,
       wheelConfig,
       disableSwipe,
+      disableSwipeWithMouse,
       ...otherProps
     } = this.props;
 
@@ -251,8 +252,8 @@ class ReactScrollWheelHandler extends Component {
       onKeyPress: this.handleKeyPress,
       tabIndex: "0",
       onTouchStart: touchStart,
-      onMouseDown: touchStart,
-      onMouseUp: touchEnd,
+      onMouseDown: !disableSwipeWithMouse ? touchStart : null,
+      onMouseUp: !disableSwipeWithMouse ? touchEnd : null,
       onTouchEnd: touchEnd,
       ref: this.containerRef,
     };
@@ -282,6 +283,7 @@ ReactScrollWheelHandler.propTypes = {
   timeout: PropTypes.number,
   disableKeyboard: PropTypes.bool.isRequired,
   disableSwipe: PropTypes.bool.isRequired,
+  disableSwipeWithMouse: PropTypes.bool.isRequired,
   preventScroll: PropTypes.bool.isRequired,
   wheelConfig: PropTypes.array,
 };
@@ -291,6 +293,7 @@ ReactScrollWheelHandler.defaultProps = {
   timeout: 700,
   disableKeyboard: false,
   disableSwipe: false,
+  disableSwipeWithMouse: false,
   preventScroll: false,
   wheelConfig: [],
 };
