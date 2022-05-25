@@ -549,4 +549,18 @@ describe("ReactScrollWheelHandler", () => {
     expect(upHandler).toHaveBeenCalled();
     expect(component.instance().startTimeout).toHaveBeenCalled();
   });
+  it("should not run handler onMouseUp or down if disableSwipeWithMouse is disabled", () => {
+    const leftHandler = jest.fn();
+    const component = mount(
+      <ReactScrollWheelHandler
+        leftHandler={leftHandler}
+        disableSwipeWithMouse
+      />
+    );
+
+    const { onMouseDown, onMouseUp } = component.find("div").props();
+
+    expect(onMouseDown).toBe(null);
+    expect(onMouseUp).toBe(null);
+  });
 });
