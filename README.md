@@ -68,6 +68,7 @@ import ReactScrollWheelHandler from "react-scroll-wheel-handler";
 - **timeout**: Integer. isRequired. Default: 600. Timeout between scroll.
 - **disableKeyboard**: Boolean. Default: false.
 - **disableSwipe**: Boolean. Default: false.
+- **disableSwipeWithMouse**: Boolean. Default: false.
 - **preventScroll**: Boolean. isRequired. Prevent scroll, if you want to implement your own scrolling. Default: false.
 - **wheelConfig**: Array. Default: []. Set config for Lethargy lib. Example: [7, 100, 0.05]. stability, sensitivity, tolerance.
 
